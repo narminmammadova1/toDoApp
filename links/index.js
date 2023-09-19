@@ -67,7 +67,6 @@ $(document).ready(function () {
     
     $("#editDiv").removeClass("d-none");
     
-    // Düzenleme işlevini çağırmak için indexToEdit'i saklayabilirsiniz
     $("#editDiv").data("editIndex", indexToEdit);
   });
   
