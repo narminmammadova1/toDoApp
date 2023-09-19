@@ -1,12 +1,27 @@
-.icon {float: right;
-    margin-right: 10px; /* Ikonlar arasında boşluk eklemek için */
-    cursor: pointer; /* İkonlara fare işareti değişsin */
-  }
-  
-  .fa-trash:hover {
-    color: red; /* Çöp kutusu ikonunun hover rengi */
-  }
-  
-  .fa-pen:hover {
-    color: blue; /* Kalem ikonunun hover rengi */
-  }
+.icon {
+  float: right;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.fa-trash:hover {
+  color: red;
+}
+
+.fa-pen:hover {
+  color: blue;
+}
+
+.icon-container {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 1;
+  right: 10px;
+}
+
+.list li {
+  white-space: wrap;
+  overflow: auto;
+  text-overflow: ellipsis;
+}

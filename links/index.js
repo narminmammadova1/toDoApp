@@ -19,8 +19,8 @@ $(document).ready(function () {
           <li class="d-flex w-100 fs-5 fw-medium">${index + 1}) ${item}</li> 
           <button class="btn del-btn " data-index="${index}"> <i class="fa-solid fa-trash"></i></button>
           <button class="btn edit-btn " data-index="${index}"><i class="fa-solid fa-pen"></i></button>
-
           </div>
+          
       `;
       $(".list").append(listItem);
     });
@@ -59,22 +59,31 @@ $(document).ready(function () {
     refreshList();
   }
 
-  function editItem(index) {
-    const editDiv = $("#editDiv");
-    editDiv.removeClass("d-none");
+  $(document).on("click", ".edit-btn", function() {
+    const indexToEdit = $(this).data("index");
+    const textToEdit = toDoData[indexToEdit];
     
-    const editInput = $("#editInput");
-    editInput.val(toDoData[index]);
-
-    $("#saveBtn").off().on("click", function () {
-      toDoData[index] = editInput.val();
-      localStorage.setItem("toDoData", JSON.stringify(toDoData));
-      editDiv.addClass("d-none");
-      refreshList();
-    });
-  }
-
-  // Sayfa yüklendiğinde To-Do listesini güncelle
+    $("#editInput").val(textToEdit);
+    
+    $("#editDiv").removeClass("d-none");
+    
+    // Düzenleme işlevini çağırmak için indexToEdit'i saklayabilirsiniz
+    $("#editDiv").data("editIndex", indexToEdit);
+  });
+  
+  $("#saveBtn").on("click", function() {
+    const indexToEdit = $("#editDiv").data("editIndex");
+    const editedText = $("#editInput").val();
+    
+    toDoData[indexToEdit] = editedText;
+    localStorage.setItem("toDoData", JSON.stringify(toDoData));
+    
+    $("#editDiv").addClass("d-none");
+    
+  
+    refreshList();
+  });
+  
   refreshList();
 });
 
