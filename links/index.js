@@ -82,6 +82,30 @@ $(document).ready(function () {
   
     refreshList();
   });
+
+  $(document).on("keydown", function(e) {
+    if (e.key === "Enter") {
+      const inputValue = $(".input").val();
+      if (inputValue === "") {
+        alert("Please write something");
+      } else {
+        toDoData.push(inputValue);
+        localStorage.setItem("toDoData", JSON.stringify(toDoData));
+        $(".input").val("");
+        renderList();
+        refreshList();
+      }
+    }
+  });
+  
+  
+  
+  
+  
+  
+
+
+
   
   refreshList();
 });
